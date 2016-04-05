@@ -64,19 +64,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="41dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="24dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,5 +75,17 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="29dp"
         android:layout_marginEnd="29dp" />
+
+    <android.inputmethodservice.ExtractEditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your message here"
+        android:id="@+id/extractEditText"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="32dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
