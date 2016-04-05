@@ -86,6 +86,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="32dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/button" />
 
 </RelativeLayout>
