@@ -79,7 +79,7 @@
     <android.inputmethodservice.ExtractEditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your message here Offline Text"
+        android:text="Enter your message here Online Text"
         android:id="@+id/extractEditText"
         android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
