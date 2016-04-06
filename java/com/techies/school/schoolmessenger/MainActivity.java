@@ -45,12 +45,40 @@ public class MainActivity extends Activity {
         teachers=(CheckBox)findViewById(R.id.checkBox3);
         management=(CheckBox)findViewById(R.id.checkBox4);
 
-        /*all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        all.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+            public void onClick(View v) {
+                s="ALL";
+                parents.setChecked(false);
+                teachers.setChecked(false);
+                management.setChecked(false);
             }
-        });*/
+        });
+
+        parents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                s += "PARENTS";
+                all.setChecked(false);
+                all.setChecked(false);
+            }
+        });
+
+        teachers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                s += "TEACHERS";
+                all.setChecked(false);
+            }
+        });
+
+        management.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                s += "MANAGEMENT";
+                all.setChecked(false);
+            }
+        });
 
 
         b.setOnClickListener(new View.OnClickListener() {
@@ -65,10 +93,12 @@ public class MainActivity extends Activity {
 //192.168.1.5 apne computer ka IP address hai. u can check by cmd 'ipconfig' command and spinner.php
 //file xamp server mai rakhi gayi hai usi se data read kar rahe hai data base se class table ka
                     String query = URLEncoder.encode(e.getText().toString(), "utf-8");
-                    HttpPost httppost = new HttpPost("http://jaiveer.890m.com/spinner_putmsg.php?uname=admin&msg=" + query);
-                    HttpResponse response = httpclient.execute(httppost);
-                    HttpEntity entity = response.getEntity();
-                    is = entity.getContent();
+                    if(s!=null) {
+                        HttpPost httppost = new HttpPost("http://jaiveer.890m.com/spinner_putmsg.php?uname=admin&msg=" + query + "cat=" + s);
+                        HttpResponse response = httpclient.execute(httppost);
+                        HttpEntity entity = response.getEntity();
+                        is = entity.getContent();
+                    }
                     Log.e("Pass 1", "connection success ");
                 }
                 catch(Exception e)
