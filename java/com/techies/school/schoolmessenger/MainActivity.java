@@ -1,14 +1,13 @@
 package com.techies.school.schoolmessenger;
 
 import android.app.Activity;
+import android.inputmethodservice.ExtractEditText;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -17,15 +16,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.net.URLEncoder;
 
 public class MainActivity extends Activity {
     //is project mai spinner.php file use hui hai.jisko aise hi res folder mai rukh diya hai but
@@ -35,55 +29,81 @@ public class MainActivity extends Activity {
     InputStream is=null;
     String result=null;
     String line=null;
-
+    public Button b;
+    public ExtractEditText e;
+    public CheckBox all,parents,teachers,management;
+    private String s;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try
-        {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        b=(Button)findViewById(R.id.button);
+        e=(ExtractEditText)findViewById(R.id.extractEditText);
+        all=(CheckBox)findViewById(R.id.checkBox);
+        parents=(CheckBox)findViewById(R.id.checkBox2);
+        teachers=(CheckBox)findViewById(R.id.checkBox3);
+        management=(CheckBox)findViewById(R.id.checkBox4);
 
-            StrictMode.setThreadPolicy(policy);
-            HttpClient httpclient = new DefaultHttpClient();
+        /*all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            }
+        });*/
+
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try
+                {
+                    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+                    StrictMode.setThreadPolicy(policy);
+                    HttpClient httpclient = new DefaultHttpClient();
 //192.168.1.5 apne computer ka IP address hai. u can check by cmd 'ipconfig' command and spinner.php
 //file xamp server mai rakhi gayi hai usi se data read kar rahe hai data base se class table ka
-            HttpPost httppost = new HttpPost("http://jaiveer.890m.com/spinner.php");
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity entity = response.getEntity();
-            is = entity.getContent();
-            Log.e("Pass 1", "connection success ");
-        }
-        catch(Exception e)
-        {
-            Log.e("Fail 1", e.toString());
-            Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                    Toast.LENGTH_LONG).show();
-        }
+                    String query = URLEncoder.encode(e.getText().toString(), "utf-8");
+                    HttpPost httppost = new HttpPost("http://jaiveer.890m.com/spinner_putmsg.php?uname=admin&msg=" + query);
+                    HttpResponse response = httpclient.execute(httppost);
+                    HttpEntity entity = response.getEntity();
+                    is = entity.getContent();
+                    Log.e("Pass 1", "connection success ");
+                }
+                catch(Exception e)
+                {
+                    Log.e("Fail 1", e.toString());
+                    Toast.makeText(getApplicationContext(), "Invalid IP Address",
+                            Toast.LENGTH_LONG).show();
+                }
 
-        try
-        {
-            BufferedReader reader = new BufferedReader
-                    (new InputStreamReader(is,"iso-8859-1"),8);
+                try
+                {
+                    BufferedReader reader = new BufferedReader
+                            (new InputStreamReader(is,"iso-8859-1"),8);
 
-            StringBuilder sb = new StringBuilder();
+                    StringBuilder sb = new StringBuilder();
 
-            while ((line = reader.readLine()) != null)
-            {
-                sb.append(line + "\n");
+                    while ((line = reader.readLine()) != null)
+                    {
+                        sb.append(line + "\n");
+                    }
+
+                    is.close();
+                    result = sb.toString();
+                    Log.e("Pass 2", "connection success ");
+                }
+                catch(Exception e)
+                {
+                    Log.e("Fail 2", e.toString());
+                }
             }
+        });
 
-            is.close();
-            result = sb.toString();
-            Log.e("Pass 2", "connection success ");
-        }
-        catch(Exception e)
-        {
-            Log.e("Fail 2", e.toString());
-        }
 
-        try
+
+        /*try
         {Log.e("jai 00","kan");
             JSONArray JA=new JSONArray(result);
             JSONObject json= null;
@@ -138,7 +158,7 @@ public class MainActivity extends Activity {
         catch(Exception e)
         {
             Log.e("Fail 3", e.toString());
-        }
+        }*/
     }
 
 
