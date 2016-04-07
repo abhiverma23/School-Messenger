@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">School Messenger</string>
+    <string name="_teacher">Teachers</string>
+    <string name="_all">All</string>
+    <string name="_parents">Parents</string>
+    <string name="_management">Management</string>
+    <string name="_enter_your_message">Enter your message</string>
+    <string name="_send">Send</string>
+    <string name="_enter_your_message_2">Enter your message here Text Updated Offline</string>
 </resources>

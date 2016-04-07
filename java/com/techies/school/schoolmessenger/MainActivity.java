@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
     public Button b;
     public ExtractEditText e;
     public CheckBox all,parents,teachers,management;
-    private String s;
+    private String s = "";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +48,6 @@ public class MainActivity extends Activity {
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                s="ALL";
                 parents.setChecked(false);
                 teachers.setChecked(false);
                 management.setChecked(false);
@@ -58,8 +57,6 @@ public class MainActivity extends Activity {
         parents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                s += "PARENTS";
-                all.setChecked(false);
                 all.setChecked(false);
             }
         });
@@ -67,7 +64,6 @@ public class MainActivity extends Activity {
         teachers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                s += "TEACHERS";
                 all.setChecked(false);
             }
         });
@@ -75,7 +71,6 @@ public class MainActivity extends Activity {
         management.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                s += "MANAGEMENT";
                 all.setChecked(false);
             }
         });
@@ -89,12 +84,25 @@ public class MainActivity extends Activity {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
                     StrictMode.setThreadPolicy(policy);
-                    HttpClient httpclient = new DefaultHttpClient();
+                    @SuppressWarnings("deprecation") HttpClient httpclient = new DefaultHttpClient();
 //192.168.1.5 apne computer ka IP address hai. u can check by cmd 'ipconfig' command and spinner.php
 //file xamp server mai rakhi gayi hai usi se data read kar rahe hai data base se class table ka
                     String query = URLEncoder.encode(e.getText().toString(), "utf-8");
-                    if(s!=null) {
-                        HttpPost httppost = new HttpPost("http://jaiveer.890m.com/spinner_putmsg.php?uname=admin&msg=" + query + "cat=" + s);
+                    s="";
+                    s +=all.isChecked()?1:0;
+                    s +=parents.isChecked()?1:0;
+                    s +=teachers.isChecked()?1:0;
+                    s +=teachers.isChecked()?1:0;
+                    if(!s.equals("0000")) {
+                        Toast.makeText(getApplicationContext(), s,
+                                Toast.LENGTH_LONG).show();
+                        @SuppressWarnings("deprecation") HttpPost httppost = new HttpPost(
+                                "http://jaiveer.890m.com/spinner_putmsg.php?"
+                                        + "uname=admin"
+                                        + "&msg=" + query
+                                        + "&cat=" + s
+                        );
+                        // => + "&var_name=" + java.var
                         HttpResponse response = httpclient.execute(httppost);
                         HttpEntity entity = response.getEntity();
                         is = entity.getContent();
@@ -117,7 +125,7 @@ public class MainActivity extends Activity {
 
                     while ((line = reader.readLine()) != null)
                     {
-                        sb.append(line + "\n");
+                        sb.append(line).append("\n");
                     }
 
                     is.close();
