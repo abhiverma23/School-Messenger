@@ -9,4 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.techies.school.schoolmessenger.Menu">
 
+    <ListView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/menu_lv"
+    android:entries="@array/menu_list"/>
+
 </RelativeLayout>

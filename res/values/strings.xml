@@ -7,4 +7,11 @@
     <string name="_enter_your_message">Enter your message</string>
     <string name="_send">Send</string>
     <string name="_enter_your_message_2">Enter your message here Text Updated Offline</string>
+    <array name="menu_list">
+        <item>Loin Here</item>
+        <item>Send Message</item>
+        <item>Read Notification</item>
+        <item>Log Out</item>
+        <item>Exit</item>
+    </array>
 </resources>
