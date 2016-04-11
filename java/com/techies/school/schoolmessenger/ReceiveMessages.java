@@ -7,11 +7,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ReceiveMessages extends AppCompatActivity {
 
     private RadioButton a,p,t,m;
 
-    private String [] msg;
+    //protected String [] msg;
 
     final String _default = "all";
 
@@ -76,27 +79,15 @@ public class ReceiveMessages extends AppCompatActivity {
 
     protected void updateList(String type)
     {
-        String[] mList = {
-                type,
-                "Today - Sunny - 88/63",
-                "Ok what is your status?",
-                "Today - Sunny - 88/63",
-                "Tomorrow - DontKnow - 55/22",
-                "Hello World!",
-                "How are you?",
-                "What are you doing?",
-                "Ok what is your status?",
-                "Today - Sunny - 88/63",
-                "Tomorrow - DontKnow - 55/22",
-                "Hello World!",
-                "How are you?",
-                "What are you doing?",
-                "Ok what is your status?",
-                "Good bye..!"
-        };
+        List<String> li;
+        li = new ArrayList<>();
+        li.add(type);
+        li.add("Conetnt to be fetched from internet and stored here");
+        li.add("New list item trying to increase the size of the list content so that I can see" +
+                " how much it can hold in itself");
+        li.add("This is the END...");
 
         listView1.setAdapter(new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, mList));
-
+                android.R.layout.simple_list_item_1, li));
     }
 }
