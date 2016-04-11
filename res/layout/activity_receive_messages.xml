@@ -9,4 +9,42 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.techies.school.schoolmessenger.ReceiveMessages">
 
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All"
+        android:id="@+id/receive_all"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parents"
+        android:id="@+id/receive_parents"
+        android:layout_alignBottom="@+id/receive_all"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/receive_management"
+        android:layout_alignStart="@+id/receive_management" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teachers"
+        android:id="@+id/receive_teachers"
+        android:layout_below="@+id/receive_all"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Management"
+        android:id="@+id/receive_management"
+        android:layout_alignTop="@+id/receive_teachers"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
