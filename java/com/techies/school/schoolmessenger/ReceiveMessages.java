@@ -38,7 +38,6 @@ public class ReceiveMessages extends AppCompatActivity {
                 p.setChecked(false);
                 t.setChecked(false);
                 m.setChecked(false);
-                // TODO Add code here to call the same program which update list
             }
         });
 
@@ -49,7 +48,6 @@ public class ReceiveMessages extends AppCompatActivity {
                 a.setChecked(false);
                 t.setChecked(false);
                 m.setChecked(false);
-                // TODO Add code here to call the same program which update list
             }
         });
 
@@ -60,7 +58,6 @@ public class ReceiveMessages extends AppCompatActivity {
                 a.setChecked(false);
                 p.setChecked(false);
                 m.setChecked(false);
-                // TODO Add code here to call the same program which update list
             }
         });
 
@@ -71,7 +68,6 @@ public class ReceiveMessages extends AppCompatActivity {
                 a.setChecked(false);
                 p.setChecked(false);
                 t.setChecked(false);
-                // TODO Add code here to call the same program which update list
             }
         });
 
